@@ -6,18 +6,27 @@ import Header from "../components/Header"
 import Hero from "../components/Hero"
 import Projects from "../components/Projects"
 import Skills from "../components/Skills"
-import { fetchExperiences } from "../utils/fetchExperiences"
-import { fetchPageInfo } from "../utils/fetchPageInfo"
-import { fetchProjects } from "../utils/fetchProjects"
-import { fetchSkills } from "../utils/fetchSkills"
-import { fetchSocials } from "../utils/fetchSocials"
+import { groq } from 'next-sanity'
+import { sanityClient } from '../sanity'
+import { PageInfo, Social, Experience as ExpierienceType, Project, Skill } from '../typings'
 
+const pageInfoQuery = groq`*[_type == "pageInfo"][0]`
+const skillQuery = groq`*[_type == "skill"]`
+const socialQuery = groq`*[_type == "social"]`
+const experienceQuery = groq`*[_type == "experience"] | order(dateStarted desc) {
+    ...,
+    technologies[]->
+}`
+const projectQuery = groq`*[_type == "project"] {
+    ...,
+    technologies[]->
+}`
 async function getData() {
-    const pageInfo = await fetchPageInfo()
-    const projects = await fetchProjects()
-    const skills = await fetchSkills()
-    const experiences = await fetchExperiences()
-    const socials = await fetchSocials()
+    const pageInfo: PageInfo = await sanityClient.fetch(pageInfoQuery)
+    const experiences: ExpierienceType[] = await sanityClient.fetch(experienceQuery)
+    const projects: Project[] = await sanityClient.fetch(projectQuery)
+    const skills: Skill[] = await sanityClient.fetch(skillQuery)
+    const socials: Social[] = await sanityClient.fetch(socialQuery)
 
     return {
         pageInfo,
@@ -30,11 +39,10 @@ async function getData() {
 
 async function Home() {
     const data = await getData()
-    console.log(data);
 
     return (
         <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll
-         z-0 overflow-x-hidden scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80">
+         z-0 overflow-x-hidden sm:scrollbar sm:scrollbar-track-gray-400/20 sm:scrollbar-thumb-[#F7AB0A]/80">
             <Header socials={data?.socials} />
             <section id="hero" className="snap-start">
                 <Hero pageInfo={data?.pageInfo} />
