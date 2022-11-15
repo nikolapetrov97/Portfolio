@@ -25,19 +25,19 @@ function ContactMe({ }: Props) {
                 About
             </h3>
 
-            <div className="xs:max-w-xs sm:max-w-none">
+            <div className="xs:max-w-xs sm:max-w-none xs:pt-14 sm:pt-0">
                 <h4 className="sm:text-4xl xs:text-xl font-semibold text-center">
                     I have got just what you need.{" "}
                     <span className="underline decoration-[#F7AB0A]/50">
                         Lets Talk.
                     </span>{" "}
                 </h4>
-                <div className='sm:space-y-6 xs:space-y-2 xs:mt-2 sm:mt-6'>
-                    <div className="flex items-center space-x-5 justify-center">
+                <div className='sm:space-y-0 xs:space-y-2 xs:mt-2 sm:mt-6 flex sm:flex-row xs:flex-col sm:gap-8 xs:gap-0 items-center justify-center'>
+                    <div className="flex items-center space-x-5 justify-center space-y-0">
                         <PhoneIcon className="text-[#F7AB0A] h-7 w-7 animate-pulse" />
                         <p className="sm:text-2xl xs:text-lg">0897538899</p>
                     </div>
-                    <div className="flex items-center space-x-5 justify-center">
+                    <div className="flex items-center space-x-5 justify-center mt-0">
                         <EnvelopeIcon className="text-[#F7AB0A] h-7 w-7 animate-pulse" />
                         <p className="sm:text-2xl xs:text-lg">nikolagpetrov@gmail.com</p>
                     </div>

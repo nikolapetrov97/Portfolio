@@ -23,8 +23,8 @@ function About({ pageInfo }: Props) {
                 initial={{ x: -200, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ duration: 1.2 }}
-                className='-mb-28 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover
-                md:rounded-lg md:w-64 md:h-96 xl:w-[500px] xl:h-[600px]'
+                className='-mb-28 md:mb-0 flex-shrink-1 w-56 h-56 rounded-full object-cover
+                md:rounded-full md:w-64 md:h-96 xl:w-[350px] xl:h-[350px]'
                 src={urlFor(pageInfo?.profilePic).url()}
                 alt=""
             />
