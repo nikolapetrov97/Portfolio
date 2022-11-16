@@ -37,6 +37,13 @@ async function getData() {
     }
 }
 
+export const dynamic = 'force-dynamic',
+    fetchCache = 'force-no-store',
+    dynamicParams = false,
+    revalidate = false,
+    runtime = 'nodejs',
+    preferredRegion = 'auto'
+
 async function Home() {
     const data = await getData()
 
