@@ -9,6 +9,7 @@ import Skills from "../components/Skills"
 import { groq } from 'next-sanity'
 import { sanityClient } from '../sanity'
 import { PageInfo, Social, Experience as ExpierienceType, Project, Skill } from '../typings'
+import CookieBot from 'react-cookiebot'
 
 const pageInfoQuery = groq`*[_type == "pageInfo"][0]`
 const skillQuery = groq`*[_type == "skill"]`
@@ -50,6 +51,7 @@ async function Home() {
     return (
         <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll
          z-0 overflow-x-hidden sm:scrollbar sm:scrollbar-track-gray-400/20 sm:scrollbar-thumb-[#F7AB0A]/80">
+            <CookieBot domainGroupId={"c9551ee8-6a30-4a11-aa18-0138dbb9d59f"} />
             <Header socials={data?.socials} />
             <section id="hero" className="snap-start">
                 <Hero pageInfo={data?.pageInfo} />
